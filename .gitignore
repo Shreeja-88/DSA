@@ -1,0 +1,17 @@
+# VS Code settings
+.vscode/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Java class files
+*.class
+
+# C++ compiled files
+*.out
+*.exe
+
+# Mac/Windows system files
+.DS_Store
+Thumbs.db
