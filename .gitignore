@@ -15,3 +15,36 @@ __pycache__/
 # Mac/Windows system files
 .DS_Store
 Thumbs.db
+
+# Compiled object files (C/Java)
+*.o
+*.out
+*.exe
+*.class
+
+# C specific
+*.a
+*.so
+*.dll
+
+# Java specific
+*.jar
+*.war
+*.ear
+
+# IDE / Editor settings
+.vscode/
+.idea/
+*.iml
+*.classpath
+*.project
+*.settings/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs and temp
+*.log
+*.tmp
+*.swp
