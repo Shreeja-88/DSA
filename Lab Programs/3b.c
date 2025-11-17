@@ -1,5 +1,3 @@
-// Extend the program to reverse the linked list elements. 
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -9,28 +7,57 @@ typedef struct node {
     struct node* next;
 } NODE;
 
-// Function to insert a node at the end
-NODE* insertEnd(NODE* start, int value) {
+NODE *insertfront(NODE *, int);
+NODE *reverse(NODE *);
+void display(NODE *);
+
+// Main function
+int main() {
+    NODE* start = NULL;
+    int num, choice;
+    while (1) {
+        printf("\nEnter your choice\n");
+        printf("1. Insert at front\n2. Reverse\n3. Display\n4. Stop\n");
+        scanf("%d", &choice);
+        switch (choice) {
+            case 1:
+                printf("Enter the number to insert: ");
+                scanf("%d", &num);
+                start = insertfront(start, num);
+                break;
+            case 2:
+                start = reverse(start);
+                printf("List reversed successfully.\n");
+                break;
+            case 3:
+                display(start);
+                break;
+            case 4:
+                exit(0);
+            default:
+                printf("Invalid choice\n");
+        }
+    }
+    return 0;
+}
+
+// Function to insert a node at the front
+NODE* insertfront(NODE* start, int n) {
     NODE* new_node = (NODE*)malloc(sizeof(NODE));
-    new_node->data = value;
-    new_node->next = NULL;
-
-    if (start == NULL) {
-        return new_node;
-    }
-
-    NODE* ptr = start;
-    while (ptr->next != NULL) {
-        ptr = ptr->next;
-    }
-    ptr->next = new_node;
+    new_node->data = n;
+    new_node->next = start;
+    start = new_node;
     return start;
 }
 
 // Function to display the list
 void display(NODE* start) {
     NODE* ptr = start;
-    printf("Linked List: ");
+    if (ptr == NULL) {
+        printf("List is empty.\n");
+        return;
+    }
+    printf("Linked List data: ");
     while (ptr != NULL) {
         printf("%d ", ptr->data);
         ptr = ptr->next;
@@ -40,19 +67,13 @@ void display(NODE* start) {
 
 // Function to reverse the linked list
 NODE* reverse(NODE* start) {
-    NODE *prev, *temp, *ptr;
+    NODE *prev = NULL, *temp, *ptr = start;
 
     if (start == NULL) {
         printf("List Empty\n");
         return start;
     }
 
-    if (start->next == NULL) {
-        printf("Only one Node %d\n", start->data);
-        return start;
-    }
-    prev = NULL;
-    ptr = start;
     while (ptr != NULL) {
         temp = ptr->next;
         ptr->next = prev;
@@ -60,27 +81,8 @@ NODE* reverse(NODE* start) {
         ptr = temp;
     }
 
-    start = prev;
-    return start;
+    return prev;
 }
 
-// Main function
-int main() {
-    NODE* start = NULL;
 
-    // Create sample list: 10 -> 20 -> 30 -> 40
-    start = insertEnd(start, 10);
-    start = insertEnd(start, 20);
-    start = insertEnd(start, 30);
-    start = insertEnd(start, 40);
 
-    printf("Original ");
-    display(start);
-
-    start = reverse(start);
-
-    printf("Reversed ");
-    display(start);
-
-    return 0;
-}
