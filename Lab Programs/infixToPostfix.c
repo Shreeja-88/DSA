@@ -58,9 +58,8 @@ void infixpostfix(char in[50]) {
             while (top > -1 && stack[top] != '(') {
                 postfix[j++] = stack[top--];
             }
-            if (top > -1 && stack[top] == '(') {
                 top--; // remove '('
-            }
+            
         } else if (isOperator(in[i])) {
             // Pop operators of higher or equal precedence
             while (top > -1 && precedence(stack[top]) >= precedence(in[i])) {
