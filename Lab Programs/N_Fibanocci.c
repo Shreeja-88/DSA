@@ -21,17 +21,12 @@ int main()
 
 int Fibo(int n)
 {
-    int a = 0, b = 1, c;
 
     if (n == 0) 
         return 0;
-    if (n == 1) 
+    else if (n == 1) 
         return 1;
 
-    for (int i = 2; i <= n; i++) {
-        c = a + b;
-        a = b;
-        b = c;
-    }
-    return b;
+    else
+        return (Fibo(n-1)+ Fibo(n-2));
 }
