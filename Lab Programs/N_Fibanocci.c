@@ -6,7 +6,7 @@ int main()
 { 
     int n, res; 
 
-    printf("Enter the number of terms\n");
+    printf("Enter the term: ");
     scanf("%d", &n); 
 
     if (n == 1)
