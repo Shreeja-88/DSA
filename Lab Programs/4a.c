@@ -1,3 +1,6 @@
+// Implement a doubly linked list with operations: insert at front, insert to the left of a key 
+//node, delete by value, and display. 
+
 #include <stdio.h>
 #include <stdlib.h>
 
