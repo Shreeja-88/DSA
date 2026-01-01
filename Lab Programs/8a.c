@@ -1,88 +1,63 @@
-#include <stdio.h>
-
-#define SIZE 10   // Maximum array size and radix base (0–9)
-
-/* Function to find the largest element */
-int largest(int arr[], int n)
-{
-    int large = arr[0], i;
-    for (i = 1; i < n; i++)
-    {
-        if (arr[i] > large)
-            large = arr[i];
+#include<stdio.h>
+int getMax(int a[], int n) {
+    int max = a[0];
+    for(int i = 1; i < n; i++) {
+        if(a[i] > max) {
+            max = a[i];
+        }
     }
-    return large;
+    return max;
 }
+void countingSort(int a[], int n, int exp) {
+    int output[n];
+    int count[10] = {0};
 
-/* Function to implement Radix Sort */
-void radix_sort(int arr[], int n)
-{
-    int bucket[SIZE][SIZE];
-    int bcount[SIZE];
-    int i, j, k, rem;
-    int NOD = 0, divisor = 1, large, pass;
-
-    large = largest(arr, n);
-
-    /* Count number of digits */
-    while (large > 0)
-    {
-        NOD++;
-        large /= 10;
+    for(int i = 0; i < n; i++) {
+        count[(a[i] / exp) % 10]++;
     }
 
-    /* Perform Radix Sort for each digit */
-    for (pass = 0; pass < NOD; pass++)
-    {
-        /* Initialize bucket count */
-        for (i = 0; i < SIZE; i++)
-            bcount[i] = 0;
+    for(int i = 1; i < 10; i++) {
+        count[i] += count[i - 1];
+    }
 
-        /* Place elements into buckets */
-        for (i = 0; i < n; i++)
-        {
-            rem = (arr[i] / divisor) % 10;
-            bucket[rem][bcount[rem]] = arr[i];
-            bcount[rem]++;
-        }
+    for(int i = n - 1; i >= 0; i--) {
+        output[count[(a[i] / exp) % 10] - 1] = a[i];
+        count[(a[i] / exp) % 10]--;
+    }
 
-        /* Collect elements back to array */
-        i = 0;
-        for (k = 0; k < SIZE; k++)
-        {
-            for (j = 0; j < bcount[k]; j++)
-            {
-                arr[i++] = bucket[k][j];
-            }
-        }
-
-        divisor *= 10;
+    for(int i = 0; i < n; i++) {
+        a[i] = output[i];
     }
 }
-
-/* Main function */
-int main()
-{
-    int arr[SIZE], n, i;
-
+void radixSort(int a[], int n) {
+    int max = getMax(a, n);
+    for(int exp = 1; max / exp > 0; exp *= 10) {
+        countingSort(a, n, exp);
+    }
+}
+int main() {
+    int n;
     printf("Enter number of elements: ");
     scanf("%d", &n);
-
-    if (n > SIZE)
-    {
-        printf("Maximum allowed size is %d\n", SIZE);
-        return 0;
+    int a[n];
+    printf("Enter %d elements:\n", n);
+    for(int i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
     }
 
-    printf("Enter the array elements:\n");
-    for (i = 0; i < n; i++)
-        scanf("%d", &arr[i]);
-
-    radix_sort(arr, n);
+    radixSort(a, n);
 
     printf("Sorted array:\n");
-    for (i = 0; i < n; i++)
-        printf("%d ", arr[i]);
-
+    for(int i = 0; i < n; i++) {
+        printf("%d ", a[i]);
+    }
+    printf("\n");
     return 0;
 }
+
+//output ->
+// Enter number of elements: 5
+// Enter 5 elements:
+// 170 45 75 90 802
+// Sorted array:
+// 45 75 90 170 802
