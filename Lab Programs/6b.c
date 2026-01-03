@@ -105,12 +105,74 @@ void display() {
 
     printf("\n");
 }
-by0jhy=/
 
+/*
+1. Insert at rear
+2. Delete at front
+3. Display
+4. Stop
+Enter your choice: 1
+Enter data to insert: 5
 
+1. Insert at rear
+2. Delete at front
+3. Display
+4. Stop
+Enter your choice: 1
+Enter data to insert: 2
 
-pima2
-jhur943
-hytiy
+1. Insert at rear
+2. Delete at front
+3. Display
+4. Stop
+Enter your choice: 3
+Queue elements: 5 2 
 
-rtujg7858089
+1. Insert at rear
+2. Delete at front
+3. Display
+4. Stop
+Enter your choice: 2
+Item deleted: 5
+
+1. Insert at rear
+2. Delete at front
+3. Display
+4. Stop
+Enter your choice: 2
+Item deleted: 2
+
+1. Insert at rear
+2. Delete at front
+3. Display
+4. Stop
+Enter your choice: 3
+Queue Empty
+
+1. Insert at rear
+2. Delete at front
+3. Display
+4. Stop
+Enter your choice: 1
+Enter data to insert: 2
+
+1. Insert at rear
+2. Delete at front
+3. Display
+4. Stop
+Enter your choice: 2
+Item deleted: 2
+
+1. Insert at rear
+2. Delete at front
+3. Display
+4. Stop
+Enter your choice: 2
+Queue Empty
+
+1. Insert at rear
+2. Delete at front
+3. Display
+4. Stop
+Enter your choice: 4
+*/
