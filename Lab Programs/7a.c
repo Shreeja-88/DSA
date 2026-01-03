@@ -77,10 +77,6 @@ int main(){
                 printf("Preorder Traversal: ");
                 preorder(root);
                 break;
-            case 3:
-                printf("Preorder Traversal: ");
-                preorder(root);
-                break;
             case 4:
                 printf("Postorder Traversal: ");
                 postorder(root);
@@ -93,3 +89,65 @@ int main(){
     }
     return 0;
 }
+
+/*
+1. Insert
+2. Inorder Traversal
+3. Preorder Traversal
+4. Postorder Traversal
+5. Exit
+Enter your choice: 1
+Enter data to insert: 5
+
+1. Insert
+2. Inorder Traversal
+3. Preorder Traversal
+4. Postorder Traversal
+5. Exit
+Enter your choice: 1
+Enter data to insert: 2
+
+1. Insert
+2. Inorder Traversal
+3. Preorder Traversal
+4. Postorder Traversal
+5. Exit
+Enter your choice: 1
+Enter data to insert: 5
+
+1. Insert
+2. Inorder Traversal
+3. Preorder Traversal
+4. Postorder Traversal
+5. Exit
+Enter your choice: 1
+Enter data to insert: 3
+
+1. Insert
+2. Inorder Traversal
+3. Preorder Traversal
+4. Postorder Traversal
+5. Exit
+Enter your choice: 2
+Inorder Traversal: 2 3 5 5 
+1. Insert
+2. Inorder Traversal
+3. Preorder Traversal
+4. Postorder Traversal
+5. Exit
+Enter your choice: 3
+Preorder Traversal: 5 2 3 5 
+1. Insert
+2. Inorder Traversal
+3. Preorder Traversal
+4. Postorder Traversal
+5. Exit
+Enter your choice: 4
+Postorder Traversal: 3 2 5 5 
+1. Insert
+2. Inorder Traversal
+3. Preorder Traversal
+4. Postorder Traversal
+5. Exit
+Enter your choice: 5
+*/

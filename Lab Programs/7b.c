@@ -48,3 +48,9 @@ int main(){
     return 0;
 }
 
+/*
+Enter the number of nodes: 6
+Enter 6 values: 
+12 34 23 11 49 44
+Total leaf nodes in the BST: 3
+*/

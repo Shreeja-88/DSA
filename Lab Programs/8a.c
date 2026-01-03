@@ -1,3 +1,5 @@
+//implement radix sort on set of integers
+
 #include<stdio.h>
 int getMax(int a[], int n) {
     int max = a[0];
@@ -21,8 +23,9 @@ void countingSort(int a[], int n, int exp) {
     }
 
     for(int i = n - 1; i >= 0; i--) {
-        output[count[(a[i] / exp) % 10] - 1] = a[i];
-        count[(a[i] / exp) % 10]--;
+        int digit = (a[i] / exp) % 10;  
+        output[count[digit] - 1] = a[i];
+        count[digit]--;
     }
 
     for(int i = 0; i < n; i++) {
