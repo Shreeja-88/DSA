@@ -1,5 +1,5 @@
-// Define a structure Student with members name, USN, and marks in 3 subjects. Store n 
-//student records, compute averages, and display in descending order of marks.
+/* Define a structure Student with members name, USN, and marks in 3 subjects. 
+Store n student records, compute averages, and display in descending order of marks*/
 
 #include<stdio.h>
 struct student{
@@ -39,3 +39,14 @@ int main(){
     }
     return 0;
 }
+/*
+Sample Input/Output:
+Enter number of students: 3
+Enter name, USN and marks in 3 subjects of student 1: Shreeja 45 90 96 95
+Enter name, USN and marks in 3 subjects of student 2: Shikha 34 89 58 33
+Enter name, USN and marks in 3 subjects of student 3: Rohit 44 90 44 69
+Student details in descending order of average marks:
+Name: Shreeja, USN: 45, Average Marks: 93.67
+Name: Rohit, USN: 44, Average Marks: 67.67
+Name: Shikha, USN: 34, Average Marks: 60.00
+*/
