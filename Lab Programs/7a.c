@@ -1,153 +1,79 @@
+/*
+Write a program to design develop and implement a menu-driven program in c for the following operations on STACK of integers (Array Implementation of the stack with maximum size MAX=4).
+1) Push an element on the stack 
+2) Pop an element from the stack
+3) Check overflow and underflow situations on the stack 
+4) Display the contents of stack
+5) Exit
+Support the program with appropriate functions for each of the above operations. 
+*/
+
 #include<stdio.h>
 #include<stdlib.h>
+int MAX, stack[10];
+int push(int, int);
+int pop(int);
+void display(int);
 
-struct node{
-    int data;
-    struct node* left;
-    struct node* right;
-};
-struct node* root;
-
-struct node *insertnode(struct node *root, int data){
-    struct node *nn, *ptr, *temp;
-    nn=(struct node*)malloc(sizeof(struct node));
-    nn->data=data;
-    nn->left = NULL;
-    nn->right = NULL;
-    if(root == NULL){
-        root = nn;
-    } else {
-        ptr = root;
-        while(ptr!= NULL){
-            temp = ptr;
-            if(data < ptr->data){
-                ptr = ptr->left;
-            } else {
-                ptr = ptr->right;
-            }
-        }
-        if(data < temp->data){
-            temp->left = nn;
-        } else {
-            temp->right = nn;
-        }
-    }
-    return root;
-}
-
-void inorder(struct node *root){
-    if(root != NULL){
-        inorder(root->left);
-        printf("%d ", root->data);
-        inorder(root->right);
-    }
-}
-void postorder(struct node *root){
-    if(root != NULL){
-        postorder(root->left);
-        postorder(root->right);
-        printf("%d ", root->data);
-    }
-}
-void preorder(struct node *root){
-    if(root != NULL){
-        printf("%d ", root->data);
-        preorder(root->left);
-        preorder(root->right);
-    }
-}
 int main(){
-    int choice, data;
-    root = NULL;
+    int top = -1, choice, num;
+    printf("Enter the size of STACK: ");
+    scanf("%d",&MAX);
     while(1){
-        printf("\n1. Insert\n2. Inorder Traversal\n3. Preorder Traversal\n4. Postorder Traversal\n5. Exit\n");
+        printf("1.Push\n2.POP\n3.Display\n4.EXIT\n");
         printf("Enter your choice: ");
-        scanf("%d", &choice);
+        scanf("%d",&choice);
         switch(choice){
             case 1:
-                printf("Enter data to insert: ");
-                scanf("%d", &data);
-                root = insertnode(root, data);
+                printf("Enter the value to push: ");
+                scanf("%d", &num);
+                top = push(top, num);
                 break;
             case 2:
-                printf("Inorder Traversal: ");
-                inorder(root);
+                top = pop(top);
                 break;
             case 3:
-                printf("Preorder Traversal: ");
-                preorder(root);
+                display(top);
                 break;
             case 4:
-                printf("Postorder Traversal: ");
-                postorder(root);
-                break;
-            case 5:
+                printf("EXIT POINT\n");
                 exit(0);
-            default:
-                printf("Invalid choice! Please try again.\n");
+                break;
+            default: printf("Invalid choice\n");
         }
     }
     return 0;
 }
 
-/*
-1. Insert
-2. Inorder Traversal
-3. Preorder Traversal
-4. Postorder Traversal
-5. Exit
-Enter your choice: 1
-Enter data to insert: 5
+int push(int top, int num){
+    if(top>=MAX-1){
+        printf("OVERFLOW\n");
+    } else{
+        top++;
+        stack[top]=num;
+    }
+    return top;
+}
 
-1. Insert
-2. Inorder Traversal
-3. Preorder Traversal
-4. Postorder Traversal
-5. Exit
-Enter your choice: 1
-Enter data to insert: 2
+int pop(int top){
+    if(top==-1){
+        printf("Underflow\n");
+    } else{
+        printf("Popped element is %d \n", stack[top]);
+        top--;
+    }
+    return top;
+}
 
-1. Insert
-2. Inorder Traversal
-3. Preorder Traversal
-4. Postorder Traversal
-5. Exit
-Enter your choice: 1
-Enter data to insert: 5
-
-1. Insert
-2. Inorder Traversal
-3. Preorder Traversal
-4. Postorder Traversal
-5. Exit
-Enter your choice: 1
-Enter data to insert: 3
-
-1. Insert
-2. Inorder Traversal
-3. Preorder Traversal
-4. Postorder Traversal
-5. Exit
-Enter your choice: 2
-Inorder Traversal: 2 3 5 5 
-1. Insert
-2. Inorder Traversal
-3. Preorder Traversal
-4. Postorder Traversal
-5. Exit
-Enter your choice: 3
-Preorder Traversal: 5 2 3 5 
-1. Insert
-2. Inorder Traversal
-3. Preorder Traversal
-4. Postorder Traversal
-5. Exit
-Enter your choice: 4
-Postorder Traversal: 3 2 5 5 
-1. Insert
-2. Inorder Traversal
-3. Preorder Traversal
-4. Postorder Traversal
-5. Exit
-Enter your choice: 5
-*/
+void display(int top){
+    int i;
+    if(top==-1){
+        printf("Underflow\n");
+    } else{
+        printf("Stack Data: ");
+        for(i=top; i>=0;i--){
+            printf("%d ", stack[i]);
+        }
+        printf("\n");
+    }
+}

@@ -1,3 +1,4 @@
+//) Write a program to reverse the linked list elements.
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -83,6 +84,71 @@ NODE* reverse(NODE* start) {
 
     return prev;
 }
+/*
 
+Enter your choice
+1. Insert at front
+2. Reverse
+3. Display
+4. Stop
+1
+Enter the number to insert: 4
+
+Enter your choice
+1. Insert at front
+2. Reverse
+3. Display
+4. Stop
+1
+Enter the number to insert: 3
+
+Enter your choice
+1. Insert at front
+2. Reverse
+3. Display
+4. Stop
+1
+Enter the number to insert: 2
+
+Enter your choice
+1. Insert at front
+2. Reverse
+3. Display
+4. Stop
+1
+Enter the number to insert: 5
+
+Enter your choice
+1. Insert at front
+2. Reverse
+3. Display
+4. Stop
+3
+Linked List data: 5 2 3 4 
+
+Enter your choice
+1. Insert at front
+2. Reverse
+3. Display
+4. Stop
+2
+List reversed successfully.
+
+Enter your choice
+1. Insert at front
+2. Reverse
+3. Display
+4. Stop
+3
+Linked List data: 4 3 2 5 
+
+Enter your choice
+1. Insert at front
+2. Reverse
+3. Display
+4. Stop
+4
+
+*/
 
 

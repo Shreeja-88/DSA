@@ -118,12 +118,13 @@ NODE* del_by_value(NODE* start, int val){
         printf("List is empty. Cannot delete.\n");
         return start;
     }
-    if(start->data == val){ // Deleting the first node
+    else if(start->data == val){ // Deleting the first node
         ptr = start;
         start = start->next;
         free(ptr);
         return start;
     }
+    else {
     ptr = start;
     while(ptr != NULL && ptr->data != val){
         temp = ptr;
@@ -137,6 +138,7 @@ NODE* del_by_value(NODE* start, int val){
         printf("Value %d deleted from the list.\n", val);
     }
     return start;
+    }
 }
 
 NODE* search(NODE* start, int val){
@@ -164,3 +166,122 @@ void display(NODE* start){
         printf("NULL\n");
     }
 }
+
+
+/*
+
+Enter your choice: 
+
+1.Insert at front
+2.Insert at a position
+3.Delete by value
+4.Search
+5.Display
+6.Stop
+
+1
+Enter the number to be inserted: 7
+
+Enter your choice: 
+
+1.Insert at front
+2.Insert at a position
+3.Delete by value
+4.Search
+5.Display
+6.Stop
+
+2
+Enter the position to insert at (0-based index): 0
+Enter the number to be inserted: 6
+
+Enter your choice:
+
+1.Insert at front
+2.Insert at a position
+3.Delete by value
+4.Search
+5.Display
+6.Stop
+
+2
+Enter the position to insert at (0-based index): 8
+Enter the number to be inserted: 6
+Invalid Position.
+
+Enter your choice:
+
+1.Insert at front
+2.Insert at a position
+3.Delete by value
+4.Search
+5.Display
+6.Stop
+
+5
+The linked list is: 
+6 -> 7 -> NULL
+
+Enter your choice:
+
+1.Insert at front
+2.Insert at a position
+3.Delete by value
+4.Search
+5.Display
+6.Stop
+
+4 
+Enter the value to search: 6
+Value 6 found in the list.
+
+Enter your choice:
+
+1.Insert at front
+2.Insert at a position
+3.Delete by value
+4.Search
+5.Display
+6.Stop
+
+4
+Enter the value to search: 7
+Value 7 found in the list.
+
+Enter your choice:
+
+1.Insert at front
+2.Insert at a position
+3.Delete by value
+4.Search
+5.Display
+6.Stop
+
+3
+Enter the value to be deleted: 7
+Value 7 deleted from the list.
+
+Enter your choice:
+
+1.Insert at front
+2.Insert at a position
+3.Delete by value
+4.Search
+5.Display
+6.Stop
+
+5
+The linked list is: 
+6 -> NULL
+
+Enter your choice:
+
+1.Insert at front
+2.Insert at a position
+3.Delete by value
+4.Search
+5.Display
+6.Stop
+
+6
+*/

@@ -1,56 +1,83 @@
-//count the number of leaf nodes in the bst
-#include<stdio.h>
-#include<stdlib.h>
-struct node{
-    int data;
-    struct node* left;
-    struct node* right;
-};
-struct node *createnode(int data){
-    struct node *nn;
-    nn=(struct node*)malloc(sizeof(struct node));
-    nn->data=data;
-    nn->left = NULL;
-    nn->right = NULL;
-    return nn;
-}
-struct node* insertnode(struct node *root, int data){
-    if(root == NULL){
-        return createnode(data);
-    }
-    if(data < root->data){
-        root->left = insertnode(root->left, data);
-    } else {
-        root->right = insertnode(root->right, data);
-    }
-    return root;
-}
-int totalleafnodes(struct node *root){
-    if(root == NULL){
-        return 0;
-    }
-    if(root->left == NULL && root->right == NULL){
-        return 1;
-    }
-    return totalleafnodes(root->left) + totalleafnodes(root->right);
-}
-int main(){
-    struct node* root = NULL;
-    int n, data;
-    printf("Enter the number of nodes: ");
-    scanf("%d", &n);
-    printf("Enter %d values: \n", n);
-    for(int i=0; i<n; i++){
-        scanf("%d", &data);
-        root = insertnode(root, data);
-    }
-    printf("Total leaf nodes in the BST: %d\n", totalleafnodes(root));
+//Write a C program to convert an expression given in infix form to postfix using stack concept
+
+#include <stdio.h>
+#include <ctype.h>
+
+void infixpostfix(char in[50]);
+int precedence(char operator);
+int isOperator(char ch);
+
+int main() {
+    char infix[50];
+    printf("Enter the expression: ");
+    scanf("%s", infix);
+    infixpostfix(infix);
     return 0;
 }
 
-/*
-Enter the number of nodes: 6
-Enter 6 values: 
-12 34 23 11 49 44
-Total leaf nodes in the BST: 3
-*/
+int isOperator(char ch) {
+    switch (ch) {
+        case '+':
+        case '-':
+        case '*':
+        case '/':
+        case '^':
+            return 1;
+        default:
+            return 0;
+    }
+}
+
+int precedence(char operator) {
+    switch (operator) {
+        case '+':
+        case '-':
+            return 1;
+        case '*':
+        case '/':
+            return 2;
+        case '^':
+            return 3;
+        default:
+            return -1;
+    }
+}
+
+void infixpostfix(char in[50]) {
+    char stack[50], postfix[50];
+    int top = -1, i, j;
+
+    for (i = 0, j = 0; in[i] != '\0'; i++) {
+        if (isalnum(in[i])) {
+            // Operand goes directly to postfix
+            postfix[j++] = in[i];
+        } else if (in[i] == '(') {
+            stack[++top] = in[i];
+        } else if (in[i] == ')') {
+            // Pop until '(' is found
+            while (top > -1 && stack[top] != '(') {
+                postfix[j++] = stack[top--];
+            }
+                top--; // remove '('
+            
+        } else if (isOperator(in[i])) {
+            // Pop operators of higher or equal precedence
+            while (top > -1 && precedence(stack[top]) >= precedence(in[i])) {
+                postfix[j++] = stack[top--];
+            }
+            stack[++top] = in[i];
+        }
+    }
+
+    // Pop remaining operators
+    while (top > -1) {
+        if (stack[top] == '(') {
+            printf("Invalid expression\n");
+            return;
+        }
+        postfix[j++] = stack[top--];
+    }
+
+    postfix[j] = '\0';
+    printf("The corresponding postfix expression is: %s\n", postfix);
+}
